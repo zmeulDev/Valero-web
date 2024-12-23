@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valero - Open Source Article Sharing Platform</title>
+    <meta name="description" content="Valero is a powerful open-source article-sharing platform built with Laravel 11 and Livewire">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Valero</div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#about">About</a>
+                <a href="https://github.com/your-username/valero" target="_blank">GitHub</a>
+            </div>
+        </nav>
+        
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Share Your Stories with Valero</h1>
+                <p>A powerful open-source blogging platform built with Laravel 11 and Livewire, featuring real-time updates, SEO optimization, and a modern user experience</p>
+                <div class="cta-buttons">
+                    <a href="#" class="primary-btn">Get Started</a>
+                    <a href="https://github.com/zmeulDev/valero" class="secondary-btn">View on GitHub</a>
+                </div>
+                <div class="tech-badges">
+                    <span class="badge">Laravel 11</span>
+                    <span class="badge">Livewire</span>
+                    <span class="badge">Tailwind CSS</span>
+                </div>
+            </div>
+            <div class="hero-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            </div>
+        </div>
+    </header>
+
+    <section id="features">
+        <h2>Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-pen-to-square"></i>
+                <h3>Article Management</h3>
+                <p>Create, edit, schedule, and publish articles with image uploads and galleries</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-user-shield"></i>
+                <h3>Admin Panel</h3>
+                <p>Full CRUD operations for managing articles, categories, and users</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-bolt"></i>
+                <h3>Livewire Integration</h3>
+                <p>Dynamic, real-time components for a seamless user experience</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-search"></i>
+                <h3>SEO Optimization</h3>
+                <p>Built-in tools for better search visibility</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-moon"></i>
+                <h3>Dark Mode</h3>
+                <p>Toggle between light and dark themes for user comfort</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-clock"></i>
+                <h3>Reading Time</h3>
+                <p>Displays estimated reading time for articles</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-comments"></i>
+                <h3>Comments System</h3>
+                <p>Nested comments with real-time updates and moderation</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-user-circle"></i>
+                <h3>User Profiles</h3>
+                <p>Customizable profiles with avatars and social links</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="screenshots">
+        <h2>See Valero in Action</h2>
+        <div class="screenshot-container">
+            <div class="screenshot-nav">
+                <button class="nav-btn active" data-screen="dashboard">
+                    <i class="fas fa-columns"></i>
+                    Dashboard
+                </button>
+                <button class="nav-btn" data-screen="editor">
+                    <i class="fas fa-edit"></i>
+                    Article Editor
+                </button>
+                <button class="nav-btn" data-screen="admin">
+                    <i class="fas fa-user-shield"></i>
+                    Admin Panel
+                </button>
+                <button class="nav-btn" data-screen="dark">
+                    <i class="fas fa-moon"></i>
+                    Dark Mode
+                </button>
+            </div>
+            <div class="screenshot-display">
+                <div class="screenshot active" id="dashboard">
+                    <img src="images/screenshots/dashboard.png" alt="Valero Dashboard">
+                    <div class="screenshot-info">
+                        <h3>Modern Dashboard</h3>
+                        <p>Clean and intuitive dashboard for managing your content</p>
+                    </div>
+                </div>
+                <div class="screenshot" id="editor">
+                    <img src="images/screenshots/editor.png" alt="Article Editor">
+                    <div class="screenshot-info">
+                        <h3>Powerful Editor</h3>
+                        <p>Rich text editor with image uploads and formatting tools</p>
+                    </div>
+                </div>
+                <div class="screenshot" id="admin">
+                    <img src="images/screenshots/admin.png" alt="Admin Panel">
+                    <div class="screenshot-info">
+                        <h3>Admin Controls</h3>
+                        <p>Complete control over users, articles, and settings</p>
+                    </div>
+                </div>
+                <div class="screenshot" id="dark">
+                    <img src="images/screenshots/dark-mode.png" alt="Dark Mode">
+                    <div class="screenshot-info">
+                        <h3>Dark Mode</h3>
+                        <p>Easy on the eyes with automatic theme switching</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="getting-started">
+        <h2>Getting Started</h2>
+        <div class="steps-container">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h3>Clone Repository</h3>
+                <p>Get started by cloning the Valero repository</p>
+                <div class="code-block">
+                    <code>git clone https://github.com/zmeulDev/valero.git</code>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h3>Install Dependencies</h3>
+                <p>Install PHP and Node.js dependencies</p>
+                <div class="code-block">
+                    <code>composer install && npm install</code>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h3>Environment Setup</h3>
+                <p>Configure your environment variables</p>
+                <div class="code-block">
+                    <code>cp .env.example .env && php artisan key:generate</code>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <h3>Database Migration</h3>
+                <p>Set up your database tables</p>
+                <div class="code-block">
+                    <code>php artisan migrate --seed</code>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="docs-link">
+            <p>Need more detailed instructions?</p>
+            <a href="https://github.com/zmeulDev/valero/blob/main/README.md" class="secondary-btn">
+                <i class="fas fa-book"></i> Read Documentation
+            </a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Valero</h2>
+        <div class="about-content">
+            <div class="tech-stack">
+                <h3>Built With</h3>
+                <div class="tech-icons">
+                    <img src="images/laravel.svg" alt="Laravel">
+                    <img src="images/livewire.svg" alt="Livewire">
+                </div>
+            </div>
+            <div class="about-text">
+                <p>Valero is an open-source project dedicated to making content sharing simple and beautiful. Whether you're a blogger, developer, or content creator, Valero provides the tools you need to share your stories with the world.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Valero</div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-discord"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Valero. Open source under MIT license.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
+
