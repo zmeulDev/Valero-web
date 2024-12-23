@@ -414,6 +414,15 @@ footer {
     padding: 3rem 5% 1rem;
 }
 
+.footer-link {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    color: var(--primary-color);
+}
+
 .footer-content {
     display: flex;
     justify-content: space-between;
