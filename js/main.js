@@ -58,4 +58,34 @@ document.querySelectorAll('.nav-btn').forEach(button => {
         document.getElementById(screenId).classList.add('active');
     });
 });
+
+// Add this to your existing JavaScript
+document.querySelectorAll('.feature-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / card.clientWidth) * 100;
+        const y = ((e.clientY - rect.top) / card.clientHeight) * 100;
+        card.style.setProperty('--mouse-x', `${x}%`);
+        card.style.setProperty('--mouse-y', `${y}%`);
+    });
+});
+
+// Smooth reveal animation for sections
+const revealSections = () => {
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => {
+        section.classList.add('reveal-section');
+        observer.observe(section);
+    });
+};
+
+revealSections();
   
