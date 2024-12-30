@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>VPS Setup | Valero Documentation</title>
+</head>
+<body class="bg-gray-100 flex">
+    <div id="navigation" class="w-64"></div>
+
+    <main class="flex-1 ml-64 p-8 bg-gray-50 min-h-screen">
+        <div class="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-8">
+            <h1 class="text-4xl font-bold text-blue-600 mb-6 border-b-2 border-blue-200 pb-4">VPS Setup Guide</h1>
+            
+            <ol class="space-y-4 text-gray-700">
+                <li class="bg-blue-50 p-4 rounded-md shadow-sm">
+                    <h2 class="text-xl font-semibold text-blue-700 mb-2">1. Update System Packages</h2>
+                    <pre class="bg-gray-100 p-3 rounded text-sm"><code>sudo apt update && sudo apt upgrade -y</code></pre>
+                </li>
+
+                <li class="bg-blue-50 p-4 rounded-md shadow-sm">
+                    <h2 class="text-xl font-semibold text-blue-700 mb-2">2. Install Required Dependencies</h2>
+                    <pre class="bg-gray-100 p-3 rounded text-sm"><code>sudo apt install -y software-properties-common curl</code></pre>
+                </li>
+
+                <li class="bg-blue-50 p-4 rounded-md shadow-sm">
+                    <h2 class="text-xl font-semibold text-blue-700 mb-2">3. Add PHP 8.2 Repository</h2>
+                    <pre class="bg-gray-100 p-3 rounded text-sm"><code>sudo add-apt-repository ppa:ondrej/php -y
+sudo apt update</code></pre>
+                </li>
+
+                <li class="bg-blue-50 p-4 rounded-md shadow-sm">
+                    <h2 class="text-xl font-semibold text-blue-700 mb-2">4. Install PHP 8.2 with Required Extensions</h2>
+                    <pre class="bg-gray-100 p-3 rounded text-sm"><code>sudo apt install -y php8.2 php8.2-fpm php8.2-mysql \
+    php8.2-xml php8.2-curl php8.2-mbstring \
+    php8.2-zip php8.2-gd php8.2-intl</code></pre>
+                </li>
+
+                <li class="bg-blue-50 p-4 rounded-md shadow-sm">
+                    <h2 class="text-xl font-semibold text-blue-700 mb-2">5. Install and Configure Nginx</h2>
+                    <pre class="bg-gray-100 p-3 rounded text-sm"><code>sudo apt install -y nginx
+sudo systemctl start nginx
+sudo systemctl enable nginx</code></pre>
+                </li>
+
+                <li class="bg-blue-50 p-4 rounded-md shadow-sm">
+                    <h2 class="text-xl font-semibold text-blue-700 mb-2">6. Install MySQL Server</h2>
+                    <pre class="bg-gray-100 p-3 rounded text-sm"><code>sudo apt install -y mysql-server
+sudo systemctl start mysql
+sudo systemctl enable mysql</code></pre>
+                </li>
+
+                <li class="bg-blue-50 p-4 rounded-md shadow-sm">
+                    <h2 class="text-xl font-semibold text-blue-700 mb-2">7. Secure MySQL Installation</h2>
+                    <pre class="bg-gray-100 p-3 rounded text-sm"><code>sudo mysql_secure_installation</code></pre>
+                    <p class="mt-2 text-sm text-gray-600">Follow the interactive prompts to:
+- Set root password
+- Remove anonymous users
+- Disallow root login remotely
+- Remove test database
+- Reload privilege tables</p>
+                </li>
+
+                <li class="bg-blue-50 p-4 rounded-md shadow-sm">
+                    <h2 class="text-xl font-semibold text-blue-700 mb-2">8. Create MySQL Database for Valero</h2>
+                    <pre class="bg-gray-100 p-3 rounded text-sm"><code>sudo mysql -u root -p
+CREATE DATABASE valero_db;
+CREATE USER 'valero_user'@'localhost' IDENTIFIED BY 'strong_password';
+GRANT ALL PRIVILEGES ON valero_db.* TO 'valero_user'@'localhost';
+FLUSH PRIVILEGES;
+EXIT;</code></pre>
+                </li>
+
+                <li class="bg-blue-50 p-4 rounded-md shadow-sm">
+                    <h2 class="text-xl font-semibold text-blue-700 mb-2">9. Install Composer</h2>
+                    <pre class="bg-gray-100 p-3 rounded text-sm"><code>curl -sS https://getcomposer.org/installer | php
+sudo mv composer.phar /usr/local/bin/composer
+sudo chmod +x /usr/local/bin/composer</code></pre>
+                </li>
+
+                <li class="bg-blue-50 p-4 rounded-md shadow-sm">
+                    <h2 class="text-xl font-semibold text-blue-700 mb-2">10. Install Node.js and NPM</h2>
+                    <pre class="bg-gray-100 p-3 rounded text-sm"><code>curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+sudo apt install -y nodejs</code></pre>
+                </li>
+            </ol>
+
+            <div class="mt-6 bg-blue-50 p-4 rounded-md">
+                <h3 class="text-xl font-semibold text-blue-700 mb-2">Troubleshooting</h3>
+                <ul class="list-disc pl-6">
+                    <li>Verify PHP version: <code>php -v</code></li>
+                    <li>Check Nginx status: <code>sudo systemctl status nginx</code></li>
+                    <li>Check MySQL status: <code>sudo systemctl status mysql</code></li>
+                    <li>Verify PHP-FPM: <code>sudo systemctl status php8.2-fpm</code></li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Nginx Setup | Valero Documentation</title>
+</head>
+<body class="bg-gray-100 flex">
+    <div id="navigation" class="w-64"></div>
+
+    <main class="flex-1 ml-64 p-8 bg-gray-50 min-h-screen">
+        <div class="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-8">
+            <h1 class="text-4xl font-bold text-blue-600 mb-6 border-b-2 border-blue-200 pb-4">Steps to Add a New Website Using Nginx and SSL</h1>
+            
+            <ol class="space-y-4 text-gray-700">
+                <li class="bg-blue-50 p-4 rounded-md shadow-sm">
+                    <h2 class="text-xl font-semibold text-blue-700 mb-2">1. Create a Directory for the New Website</h2>
+                    <pre class="bg-gray-100 p-3 rounded text-sm"><code>sudo mkdir -p /var/www/valero/public
+sudo chown -R $USER:$USER /var/www/valero
+sudo chmod -R 755 /var/www/valero</code></pre>
+                </li>
+
+                <li class="bg-blue-50 p-4 rounded-md shadow-sm">
+                    <h2 class="text-xl font-semibold text-blue-700 mb-2">2. Add a Sample HTML/PHP File</h2>
+                    <pre class="bg-gray-100 p-3 rounded text-sm"><code>echo "<?php phpinfo(); ?>" > /var/www/valero/public/index.php</code></pre>
+                </li>
+
+                <li class="bg-blue-50 p-4 rounded-md shadow-sm">
+                    <h2 class="text-xl font-semibold text-blue-700 mb-2">3. Create Nginx Configuration File</h2>
+                    <p class="mb-2">Create configuration file for the website:</p>
+                    <pre class="bg-gray-100 p-3 rounded text-sm"><code>sudo nano /etc/nginx/sites-available/valero.app</code></pre>
+                    
+                    <div class="mt-4 bg-gray-50 p-3 rounded border">
+                        <h3 class="font-semibold mb-2">Configuration Content:</h3>
+                        <pre class="text-xs overflow-x-auto"><code>server {
+    server_name valero.app www.valero.app;
+
+    root /var/www/valero/public;
+    index index.php index.html;
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/var/run/php/php8.2-fpm.sock;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+
+    error_log /var/log/nginx/valero-error.log;
+    access_log /var/log/nginx/valero-access.log;
+}</code></pre>
+                    </div>
+                </li>
+
+                <li class="bg-blue-50 p-4 rounded-md shadow-sm">
+                    <h2 class="text-xl font-semibold text-blue-700 mb-2">4. Enable the Site</h2>
+                    <pre class="bg-gray-100 p-3 rounded text-sm"><code>sudo ln -s /etc/nginx/sites-available/valero.app /etc/nginx/sites-enabled/</code></pre>
+                </li>
+
+                <li class="bg-blue-50 p-4 rounded-md shadow-sm">
+                    <h2 class="text-xl font-semibold text-blue-700 mb-2">5. Test Nginx Configuration</h2>
+                    <pre class="bg-gray-100 p-3 rounded text-sm"><code>sudo nginx -t
+sudo systemctl reload nginx</code></pre>
+                </li>
+
+                <li class="bg-blue-50 p-4 rounded-md shadow-sm">
+                    <h2 class="text-xl font-semibold text-blue-700 mb-2">6. Generate SSL Certificates</h2>
+                    <pre class="bg-gray-100 p-3 rounded text-sm"><code>sudo certbot --nginx -d valero.app -d www.valero.app</code></pre>
+                </li>
+            </ol>
+
+            <div class="mt-6 bg-blue-50 p-4 rounded-md">
+                <h3 class="text-xl font-semibold text-blue-700 mb-2">Troubleshooting</h3>
+                <p>If you encounter issues, check the following logs:</p>
+                <pre class="bg-gray-100 p-3 rounded text-sm"><code>sudo tail -f /var/log/nginx/valero-error.log
+sudo tail -f /var/log/nginx/valero-access.log</code></pre>
+            </div>
+        </div>
+    </main>
+
+    <script src="main.js"></script>
+</body>
+</html>

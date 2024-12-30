@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>GitHub Clone | Valero Documentation</title>
+</head>
+<body class="bg-gray-100 flex">
+    <div id="navigation" class="w-64"></div>
+
+    <main class="flex-1 ml-64 p-8 bg-gray-50 min-h-screen">
+        <div class="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-8">
+            <h1 class="text-4xl font-bold text-blue-600 mb-6 border-b-2 border-blue-200 pb-4">Clone a GitHub Repository</h1>
+            
+            <ol class="space-y-4 text-gray-700">
+                <li class="bg-blue-50 p-4 rounded-md shadow-sm">
+                    <h2 class="text-xl font-semibold text-blue-700 mb-2">1. Install Git</h2>
+                    <pre class="bg-gray-100 p-3 rounded text-sm"><code>sudo apt install git</code></pre>
+                </li>
+
+                <li class="bg-blue-50 p-4 rounded-md shadow-sm">
+                    <h2 class="text-xl font-semibold text-blue-700 mb-2">2. Clone Repository to Specific Directory</h2>
+                    <pre class="bg-gray-100 p-3 rounded text-sm"><code>cd /var/www/valero
+sudo rm -rf public/
+git clone https://github.com/zmeulDev/valero.git .
+ls -la</code></pre>
+                </li>
+
+                <li class="bg-blue-50 p-4 rounded-md shadow-sm">
+                    <h2 class="text-xl font-semibold text-blue-700 mb-2">3. Set Proper Permissions</h2>
+                    <pre class="bg-gray-100 p-3 rounded text-sm"><code>sudo chown -R $USER:$USER /var/www/valero
+sudo chmod -R 755 /var/www/valero
+sudo chown -R www-data:www-data /var/www/valero/public
+sudo chmod 664 /var/www/valero/public/sitemap.xml
+sudo chown -R www-data:www-data /var/www/valero/storage
+sudo chown -R www-data:www-data /var/www/valero/bootstrap/cache</code></pre>
+                </li>
+            </ol>
+
+            <div class="mt-6 bg-blue-50 p-4 rounded-md">
+                <h3 class="text-xl font-semibold text-blue-700 mb-2">Troubleshooting</h3>
+                <p>If you encounter permission or cloning issues:</p>
+                <ul class="list-disc pl-6">
+                    <li>Ensure you have the correct SSH keys or access tokens</li>
+                    <li>Check your internet connection</li>
+                    <li>Verify repository URL</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <script src="main.js"></script>
+</body>
+</html>

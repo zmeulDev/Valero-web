@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Project Structure | Valero Documentation</title>
+</head>
+<body class="bg-gray-100 flex">
+    <div id="navigation" class="w-64"></div>
+
+    <main class="flex-1 ml-64 p-8 bg-gray-50 min-h-screen">
+        <div class="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-8">
+            <h1 class="text-4xl font-bold text-blue-600 mb-6 border-b-2 border-blue-200 pb-4">Valero Project Structure</h1>
+            
+            <div class="space-y-4 text-gray-700">
+                <div class="bg-blue-50 p-4 rounded-md shadow-sm">
+                    <h2 class="text-xl font-semibold text-blue-700 mb-2">🏗 Application Architecture</h2>
+                    <ul class="list-disc pl-6">
+                        <li><strong>Framework:</strong> Laravel 11</li>
+                        <li><strong>Frontend:</strong> Livewire</li>
+                        <li><strong>Styling:</strong> Tailwind CSS</li>
+                        <li><strong>Key Features:</strong> Article Management, Media Library, User Interface</li>
+                    </ul>
+                </div>
+
+                <div class="bg-blue-50 p-4 rounded-md shadow-sm">
+                    <h2 class="text-xl font-semibold text-blue-700 mb-2">📂 Models Structure</h2>
+                    <pre class="bg-gray-100 p-3 rounded text-sm"><code>/app/Models
+├── User.php           # User authentication and profile
+├── Article.php        # Article model with relationships
+├── Category.php       # Category management
+├── Media.php          # Media/image handling
+└── Comment.php        # Article comments</code></pre>
+                </div>
+
+                <div class="bg-blue-50 p-4 rounded-md shadow-sm">
+                    <h2 class="text-xl font-semibold text-blue-700 mb-2">🎮 Controllers Structure</h2>
+                    <pre class="bg-gray-100 p-3 rounded text-sm"><code>/app/Http/Controllers
+├── Admin/
+│   ├── AdminController.php       # Base admin functionality
+│   ├── ArticleController.php     # Article CRUD operations
+│   ├── CategoryController.php    # Category management
+│   ├── MediaController.php       # Media library management
+│   └── DashboardController.php   # Admin dashboard
+├── Auth/
+│   └── AuthenticatedSessionController.php # Authentication
+├── ArticleController.php         # Public article display
+├── HomeController.php            # Homepage and listings
+└── ProfileController.php         # User profile management</code></pre>
+                </div>
+
+                <div class="bg-blue-50 p-4 rounded-md shadow-sm">
+                    <h2 class="text-xl font-semibold text-blue-700 mb-2">🗂 Routes Organization</h2>
+                    <pre class="bg-gray-100 p-3 rounded text-sm"><code>/routes
+├── web.php       # Public web routes
+├── admin.php     # Admin panel routes
+└── auth.php      # Authentication routes</code></pre>
+                </div>
+
+                <div class="bg-blue-50 p-4 rounded-md shadow-sm">
+                    <h2 class="text-xl font-semibold text-blue-700 mb-2">🖼 View Components</h2>
+                    <pre class="bg-gray-100 p-3 rounded text-sm"><code>/resources/views/components
+├── admin/
+│   ├── media/
+│   │   └── gallery.blade.php     # Media library management
+│   ├── article/
+│   │   └── gallery-edit.blade.php # Article gallery editor
+│   ├── page-header.blade.php     # Admin page headers
+│   └── stats-card.blade.php      # Statistics display
+├── article/
+│   ├── header.blade.php          # Article header with cover
+│   ├── gallery.blade.php         # Article image gallery
+│   └── related.blade.php         # Related articles
+└── sidebar/
+    └── sidebar.blade.php         # Sidebar with categories</code></pre>
+                </div>
+
+                <div class="bg-blue-50 p-4 rounded-md shadow-sm">
+                    <h2 class="text-xl font-semibold text-blue-700 mb-2">🛠 Development Tools</h2>
+                    <ul class="list-disc pl-6">
+                        <li><strong>Package Manager:</strong> Composer (PHP), npm (JavaScript)</li>
+                        <li><strong>Frontend Build:</strong> Vite</li>
+                        <li><strong>Testing:</strong> PHPUnit</li>
+                        <li><strong>Rich Text Editor:</strong> TinyMCE 6</li>
+                        <li><strong>Icons:</strong> Lucide Icons</li>
+                    </ul>
+                </div>
+
+                <div class="bg-blue-50 p-4 rounded-md shadow-sm">
+                    <h2 class="text-xl font-semibold text-blue-700 mb-2">📦 Key Dependencies</h2>
+                    <ul class="list-disc pl-6">
+                        <li><strong>Backend:</strong> Laravel 11</li>
+                        <li><strong>Frontend:</strong> Livewire, Tailwind CSS</li>
+                        <li><strong>Authentication:</strong> Laravel Breeze</li>
+                        <li><strong>Image Management:</strong> Custom media library</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="main.js"></script>
+</body>
+</html> 
